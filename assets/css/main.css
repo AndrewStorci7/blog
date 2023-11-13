@@ -1,0 +1,10 @@
+:root {
+    --clr-primary:      #98EB9A;
+    --clr-secondary:    #DDF8DD;
+    --clr-h1-primary:   #F5F5F5;
+}
+
+header {
+    background-color: var(--clr-primary);
+    height: 100px;
+}
