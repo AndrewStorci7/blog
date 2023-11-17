@@ -1,15 +1,16 @@
 :root {
     --clr-primary:      #00ADB5;
-    --clr-bg:           rgb(0,173,181);
-    --clr-gradient-bg:  linear-gradient(90deg, rgba(0,173,181,1) 0%, rgba(0,182,232,1) 66%, rgba(0,182,232,1) 100%); 
+    --clr-bg:           rgba(8,176,183,255);
+    --clr-gradient-bg:  linear-gradient(90deg, rgba(8,176,183,255) 0%, rgba(27,182,189,255) 50%, rgba(48,188,195,255) 100%); 
     --clr-secondary:    #DDF8DD;
     --clr-h1-primary:   #F5F5F5;
 }
 
 body {
-    font-family: 'Ubuntu', sans-serif;
+    font-family: 'Poppins', sans-serif !important;
     background-color: #F5F5F5;
     color: white !important;
+    height: 10000px;
 }
 
 header {
@@ -20,10 +21,13 @@ header {
 .title-logo img {
     /* padding-left: 10px;
     padding-top: 8px; */
-    width: 20%;
+    padding: 0 !important;
+    margin: 0 !important;
+    margin-left: 30px !important;
+    width: 30%;
     height: auto;
 }
-
+/*
 .menu {
     display: inline-flex;
     padding-top: 10px;
@@ -38,6 +42,7 @@ header {
 .menu li::marker {
     visibility: hidden;
 }
+*/
 .btn-outline-success {
     height: 25px;
     width: 20px;
@@ -47,10 +52,17 @@ header {
     border-radius: 40px;
     background: var( --clr-bg );
     background: var( --clr-gradient-bg );
+    padding: 0;
+    margin-top: 30px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    /* transform: perspective(1000px) rotateY(30deg); */
     /* background-color: var( --clr-primary ); */
     width: 70vw;
 }
-
+.dropdown img {
+    width: 30px;
+    height: auto;
+}
 .img-parallax {
     background-color: black;
     height: 90vh;
@@ -60,4 +72,83 @@ header {
     margin-top: -10vh;
     height: auto;
     width: 100vw;
+}
+.box-change-theme {
+    background-color: var(--clr-primary);
+}
+.search-box{
+    width: fit-content;
+    height: fit-content;
+    position: relative;
+}
+
+.input-search{
+    height: 50px;
+    width: 50px;
+    border-style: none;
+    padding: 10px;
+    font-size: 18px;
+    letter-spacing: 2px;
+    outline: none;
+    border-radius: 25px;
+    transition: all .5s ease-in-out;
+    background-color: #22a6b3;
+    padding-right: 40px;
+    color: #fff;
+}
+
+.input-search::placeholder{
+    color: rgba(255, 255, 255, .5);
+    font-size: 18px;
+    letter-spacing: 2px;
+    font-weight: 100;
+}
+
+.btn-search{
+    width: 50px;
+    height: 50px;
+    border-style: none;
+    font-size: 20px;
+    font-weight: bold;
+    outline: none;
+    cursor: pointer;
+    border-radius: 50%;
+    position: absolute;
+    right: 0px;
+    color: #ffffff ;
+    background-color: transparent;
+    pointer-events: painted;  
+}
+
+.btn-search:focus ~ .input-search{
+    width: 300px;
+    border-radius: 0px;
+    background-color: transparent;
+    border-bottom: 1px solid rgba(255, 255, 255, .5);
+    transition: all 500ms cubic-bezier(0, 2);
+}
+
+.input-search:focus{
+    width: 300px;
+    border-radius: 0px;
+    background-color: transparent;
+    border-bottom: 1px solid rgba(255, 255, 255, .5);
+    transition: all 500ms cubic-bezier(0, 2);
+}
+
+.prova-anim {
+    animation: animate_icon_theme 10s linear infinite;
+}
+
+@keyframes animate_icon_theme {
+    from {
+        transform: rotate( 0deg );
+    }
+    to {
+        transform: rotate( 360deg );
+    }
+}
+.margin-fix {
+    margin-left: auto !important;
+    margin-right: 30px;
 }
