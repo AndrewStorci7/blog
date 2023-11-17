@@ -1,5 +1,7 @@
 :root {
-    --clr-primary:      #98EB9A;
+    --clr-primary:      #00ADB5;
+    --clr-bg:           rgb(0,173,181);
+    --clr-gradient-bg:  linear-gradient(90deg, rgba(0,173,181,1) 0%, rgba(0,182,232,1) 66%, rgba(0,182,232,1) 100%); 
     --clr-secondary:    #DDF8DD;
     --clr-h1-primary:   #F5F5F5;
 }
@@ -15,10 +17,11 @@ header {
     height: 8vh;
 }
 
-.title-logo {
+.title-logo img {
     /* padding-left: 10px;
     padding-top: 8px; */
-    color: white;
+    width: 20%;
+    height: auto;
 }
 
 .menu {
@@ -42,7 +45,9 @@ header {
 }
 .set-rounded {
     border-radius: 40px;
-    background-color: #12263A;
+    background: var( --clr-bg );
+    background: var( --clr-gradient-bg );
+    /* background-color: var( --clr-primary ); */
     width: 70vw;
 }
 
