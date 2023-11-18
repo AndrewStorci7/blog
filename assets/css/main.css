@@ -4,6 +4,8 @@
     --clr-gradient-bg:  linear-gradient(90deg, rgba(8,176,183,255) 0%, rgba(27,182,189,255) 50%, rgba(48,188,195,255) 100%); 
     --clr-secondary:    #DDF8DD;
     --clr-h1-primary:   #F5F5F5;
+    --clr-box-spotify:  #282B2B;
+    --clr-box-novita:   #E32813;
 }
 
 body {
@@ -16,6 +18,7 @@ body {
 header {
     /* background-color: var(--clr-primary); */
     height: 8vh;
+    z-index: 2;
 }
 
 .title-logo img {
@@ -48,16 +51,17 @@ header {
     width: 20px;
     border-radius: 50%;
 }
+.box-sw-stripe {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
 .set-rounded {
     border-radius: 40px;
     background: var( --clr-bg );
     background: var( --clr-gradient-bg );
     padding: 0;
     margin-top: 30px;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
-    /* transform: perspective(1000px) rotateY(30deg); */
-    /* background-color: var( --clr-primary ); */
     width: 70vw;
+    height: 80px;
 }
 .dropdown img {
     width: 30px;
@@ -151,4 +155,47 @@ header {
 .margin-fix {
     margin-left: auto !important;
     margin-right: 30px;
+}
+/*.dropdown-effect-appunti {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    height: 300px !important;
+    transition: border-bottom-left-radius .5s ease-out,
+                border-bottom-right-radius .5s ease-out,
+                height .3s ease-out;
+}*/
+.fix-dropwdown-menu {
+    position: fixed !important;
+    width: 70vw;
+    background-color: rgba(8, 176, 183, .5);
+}
+.box-spotify {
+    position: relative !important;
+    width: 90%;
+    height: 250px;
+    border-radius: 20px;
+    background-color: var(--clr-box-spotify);
+    margin-top: 20vh;
+}
+.box-spotify img {
+    padding: 10px;
+}
+.box-spotify span {
+    
+}
+.box-effect-novita {
+    position: relative;
+    top: -10px;
+    float: right;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: var(--clr-box-novita);
+    border-radius: 15px;
+}
+.btn-goto-spotify {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    border-radius: 20px;
+    float: right;
 }
