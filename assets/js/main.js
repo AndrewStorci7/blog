@@ -1,18 +1,13 @@
-jQuery('window').ready( ($) => {
-    const dropdown_appunti = $('#dropdown-appunti');
-    const navbar_header = $('#navbar-header');
-    let open_appunti = false;
+const parallax_el = document.querySelectorAll('.parallax-img');
 
-    /*
-    dropdown_appunti.click( () => {
-        navbar_header.addClass('dropdown-effect-appunti');
-        open_appunti = true;
+let xVal = 0, yVal = 0;
+
+window.addEventListener("mousemove", (e) => {
+    xVal = e.clientX - window.innerWidth / 2;
+    yVal = e.clientY - window.innerHeight / 2;
+
+    parallax_el.forEach(el => {
+        let speedx = el.dataset.speedx;
+        el.style.transform = `translateX(calc(-50% + ${xVal * speedx}px)) translateY(calc(-50% + ${yVal * speedx}px))`;
     });
-    $(document).click( (e) => {
-        if (!$(e.target).closest('#navbar_header').length && open_appunti) {
-            navbar_header.removeClass('dropdown-effect-appunti');
-            open_appunti = false;
-        }
-    });
-    */
 });

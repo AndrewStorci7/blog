@@ -1,0 +1,19 @@
+{
+    "name": "sandr_ft5c0vu/blog",
+    "description": "Blog for college notes",
+    "type": "project",
+    "license": "GPL",
+    "autoload": {
+        "psr-4": {
+            "iLearn\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Andrea Storci",
+            "email": "astorci.andrea@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
