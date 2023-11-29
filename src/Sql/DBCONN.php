@@ -365,12 +365,12 @@ final class DBCONN {
                      $this->sanitize_str( $join ) === 'INNER JOIN' || $this->sanitize_str( $join ) === 'inner join' ||
                      $this->sanitize_str( $join ) === 'FULL JOIN' || $this->sanitize_str( $join ) === 'full join' ) {
 
-                    if ( count( $tb ) >= 2 ) {
+                    if ( gettype( $tb ) === 'string' ) {
+                        $query .= " {$this->sanitize_str( $join )} {$this->sanitize_str( $tb )} ";
+                    } else if ( count( $tb ) >= 2 ) {
                         foreach ( $tb as $cn ) {
                             $query .= " {$this->sanitize_str( $join )} {$this->sanitize_str( $cn )} ";
                         }
-                    } else {
-                        $query .= " {$this->sanitize_str( $join )} {$this->sanitize_str( $tb )} ";
                     }
                 }
             }
@@ -384,15 +384,21 @@ final class DBCONN {
 
             $query .= " ON ";
             foreach ( $array_relations as $k => $rel ) {
-                if ( count( $rel ) != 2 )
+                if ( gettype( $rel ) === 'string' ) {
+                    if ( $k === array_key_first( $array_relations ) ) 
+                        $query .= "{$this->sanitize_str( $k )}.{$this->sanitize_str( $rel )} = ";
+                    else $query .= "{$this->sanitize_str( $k )}.{$this->sanitize_str( $rel )}";
+                } else if ( count( $rel ) != 2 ) {
                     return "Error: Array empty";
-                foreach ( $rel as $tb => $cn ) {
-                    if ( $tb === array_key_first( $rel ) )
-                        $query .= "{$this->sanitize_str( $tb )}.{$this->sanitize_str( $cn )} = ";
-                    else $query .= "{$this->sanitize_str( $tb )}.{$this->sanitize_str( $cn )}";
+                } else {
+                    foreach ( $rel as $tb => $cn ) {
+                        if ( $tb === array_key_first( $rel ) )
+                            $query .= "{$this->sanitize_str( $tb )}.{$this->sanitize_str( $cn )} = ";
+                        else $query .= "{$this->sanitize_str( $tb )}.{$this->sanitize_str( $cn )}";
+                    }
+                    if ( $k !== array_key_last( $array_relations ) )
+                        $query .= " AND ";
                 }
-                if ( $k !== array_key_last( $array_relations ) )
-                    $query .= " AND ";
             }
         }
 
@@ -403,16 +409,24 @@ final class DBCONN {
             return "Error: Array empty";
         else {
             $isLike = false;
+            $isOrderBy = false;
             foreach ( $where as $c => $condition ) {
-
+                
                 $snz_c = $this->sanitize_str( $c );
-                if ( $snz_c === 'condition' ) {
+                if ( strpos( $snz_c, 'condition' ) !== false ) {
                     if ( $this->sanitize_str( $condition ) === 'AND' || $this->sanitize_str( $condition ) === 'and' || 
                         $this->sanitize_str( $condition ) === 'OR' || $this->sanitize_str( $condition ) === 'or' ||
-                        $this->sanitize_str( $condition ) === 'NOT' || $this->sanitize_str( $condition ) === 'not' ) 
+                        $this->sanitize_str( $condition ) === 'NOT' || $this->sanitize_str( $condition ) === 'not' ||
+                        $this->sanitize_str( $condition ) === 'ASC' || $this->sanitize_str( $condition ) === 'asc' ||
+                        $this->sanitize_str( $condition ) === 'DESC' || $this->sanitize_str( $condition ) === 'desc' ) 
                         $query .= " {$this->sanitize_str( $condition )}";
                     else if ( $this->sanitize_str( $condition ) === 'LIKE' || $this->sanitize_str( $condition ) === 'like' )
                         $isLike = true;
+                    else if ( $this->sanitize_str( $condition ) === 'ORDER BY' || $this->sanitize_str( $condition ) === 'order by' )
+                        $isOrderBy = true;
+                } else if ( strpos( $snz_c, 'order_by' ) !== false && $isOrderBy ) {
+                    $query .= " ORDER BY {$this->sanitize_str( $condition )}"; // '{$this->sanitize_str( $condition )}' ";
+                    $isOrderBy = false;
                 } else if ( $snz_c !== 'condition' ) {
                     if ( $isLike ) {
                         $query .= " $snz_c LIKE :{$this->sanitize_param( $snz_c )}"; // '{$this->sanitize_str( $condition )}' ";
@@ -434,7 +448,7 @@ final class DBCONN {
                 $snz_c          = $this->sanitize_str( $c );
                 $snz_condition  = $this->sanitize_str( $condition );
     
-                if ( $snz_c !== 'condition' ) {
+                if ( strpos( $snz_c, 'condition' ) === false && strpos( $snz_c, 'order_by' ) === false ) {
     
                     switch ( gettype( $snz_condition ) ) {
                         case 'string':

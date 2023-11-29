@@ -1,0 +1,22 @@
+RewriteEngine On
+RewriteBase /blog/
+
+# Regola per Course, Year, Subject e Lesson
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([^/]+)/([^/]+)/([^/]+)/?$ src/content.php?course=$1&year=$2&subject=$3&lesson=$4 [QSA,L]
+
+# Regola per Course, Year e Subject
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([^/]+)/([^/]+)/?$ src/content.php?course=$1&year=$2&subject=$3 [QSA,L]
+
+# Regola per Course e Year
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([^/]+)/([^/]+)/?$ src/content.php?course=$1&year=$2 [QSA,L]
+
+# Regola per Course e Year
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([^/]+)/([^/]+)/?$ src/content.php?course=$1 [QSA,L]

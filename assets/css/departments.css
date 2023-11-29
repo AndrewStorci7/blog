@@ -1,5 +1,6 @@
 /* scienze matematiche, fisiche e informatiche  */
-.smfi { background-color: #3141BB; color: white; }
+.smfi { background: rgb(49,65,187); background: -moz-linear-gradient(162deg, rgba(49,65,187,1) 61%, rgba(245,245,245,1) 100%); background: -webkit-linear-gradient(162deg, rgba(49,65,187,1) 61%, rgba(245,245,245,1) 100%); background: linear-gradient(162deg, rgba(49,65,187,1) 61%, rgba(245,245,245,1) 100%); filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#3141bb",endColorstr="#f5f5f5",GradientType=1);   color: white; }
+.smfi-fp { background-color: #7581DE; background: #7581DE; color: white; }
 /* ingegneria e architettura */
 .ia { background-color: #1F1F1E; color: white; }
 /* scienze degli alimenti e del farmaco */

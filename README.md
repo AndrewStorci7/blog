@@ -5,6 +5,13 @@
 - [x] Cercare immagini per effetto parallasse da inserire nella pagina index.
 - [x] Documentarsi sull'effetto parallasse con il movimento del mouse.
 - [ ] Aggiungere al menu la voce "Lezioni private".
+- [x] Aggiornare Database:
+    - Aggiungere tabella __`lesson`__: la segeunte tabella dovrà contentere le informazioni della lezione di una certa materia.
+- [ ] Aggiustare la classe `Lesson`
+- [ ] Terminare file `content.php`:
+    - [ ] Array contenente il nome del __corso__  e le varie __lezioni__ __*CREATO!*__
+    - [ ] Creare oggetto di tipo `LateralBar` e aggiornare le varie classi
+    - [ ] Far __visualizzare__ il contenuto e creare il `css` per la `lateral bar`
 
 # Things to do
 

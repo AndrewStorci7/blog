@@ -9,11 +9,15 @@ namespace iLearn\Box;
 
 use iLearn\Box\Course;
 
-final class BoxSubject {
+final class Subject {
+
+    private $id;
 
     private $title;
 
     private $short_desc;
+
+    private $hint;
 
     /* private $content; */
 
@@ -23,9 +27,7 @@ final class BoxSubject {
 
     private $year;
 
-    private $course;
-
-    private $link;
+    public readonly Course $course;
 
     /*
     public function __costructor($title, $short_desc, $content, $image, $difficulty, $year, $course) {
@@ -39,19 +41,24 @@ final class BoxSubject {
     }
     */
 
-    public function __construct($title, $short_desc, $image, $difficulty, $year, Course $course, $link) {
+    public function __construct( int $id = 0, $title = null, $short_desc = null, $hint = null, $image = null, $difficulty = null, int $year = 0, Course $course = NULL ) {
+        $this->id = $id;
         $this->title = $title;
         $this->short_desc = $short_desc;
+        $this->hint = $hint;
         $this->image = $image;
         $this->difficulty = $difficulty;
         $this->year = $year;
         $this->course = $course;
-        $this->link = $link;
     }
+
+    public function getId() { return $this->id; }
 
     public function getTitle() { return $this->title; }
 
     public function getShortDesc() { return $this->short_desc; }
+
+    public function getHint() { return $this->hint; }
 
     /* public function getContent() { return $this->title; } */
 
@@ -61,9 +68,7 @@ final class BoxSubject {
 
     public function getYear() { return $this->year; }
 
-    public function getCourseTitle() { return $this->course->getTitle(); }
+    // public function getCourseTitle() { return $this->course->getTitle(); }
 
-    public function getCourseCssClass() { return $this->course->getCssClass(); }
-
-    public function getLink() { return $this->link; }
+    // public function getCourseCssClass() { return $this->course->getCssClass(); }
 }

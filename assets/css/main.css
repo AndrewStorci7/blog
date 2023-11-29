@@ -18,7 +18,7 @@ body {
     background-color: #F5F5F5;
     color: white !important;
     overflow-x: hidden;
-    height: 10000px;
+    /* height: 10000px; */
     /* overflow-y: hidden; */
 }
 
@@ -33,6 +33,57 @@ header {
     /* background-color: var(--clr-primary); */
     height: 8vh;
     z-index: 9999;
+}
+
+.header-panel {
+    opacity: .9;
+    padding-top: 15vh;
+    padding-bottom: 30px;
+}
+.filter-panel {
+    border-radius: 40px;
+    opacity: .75;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.filter-panel .search-box {
+    width: max-content !important;
+}
+.filter-panel .search-box .btn-search {
+    background-color: #F5F5F5;
+}
+.filter-panel .search-box .btn-search i {
+    color: var(--clr-box-spotify);
+}
+.filter-panel .search-box {
+    width: max-content !important;
+}
+.filter-panel .dropdown {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    float: right;
+    transform: translateY(-50%);
+}
+.filter-panel .dropdown button {
+    background-color: #F5F5F5;
+    color: #282B2B;
+    border: none;
+    clear: both;
+    float: right;
+    border-radius: 30px;
+}
+main .lateral-navbar {
+    border-radius: 20px;
+    /* background-color: #4A6D7C; */
+}
+main .lateral-navbar .title-lateral-navbar {
+    top: 10px;
+    height: 50px;
+    margin: 10px;
+    border-radius: 15px;
+    background-color: #1B2676;
 }
 
 .title-logo img {
@@ -455,6 +506,10 @@ header {
     font-family: 'Inconsolata', monospace;
     font-weight: 500;
 }
+.fix-padding {
+    padding-left: 0 !important;
+    margin-left: 0 !important;
+}
 .mini-box {
     margin-left: 5px;
     margin-right: 5px;
@@ -501,4 +556,13 @@ header {
 .content .text a:hover {
     background-color: rgba(52, 115, 118, .5);
     transition: all .09s ease-out;
+}
+.lateral-navbar .information-courses {
+    background-color: #404779;
+    padding: 5px;
+    margin: 10px;
+    margin-top: 10px;
+    margin-top: 20px;
+    border-radius: 10px;
+    width: fit-content;
 }

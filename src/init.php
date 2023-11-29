@@ -1,29 +1,34 @@
 <?php
+/**
+ * Init File
+ * 
+ * @author Andrea Storci <AndrewStorci7>
+ */
 
-require_once __DIR__ . "/../vendor/autoload.php";
+require_once __DIR__ . "/config.php";
 
-global $db, $gb_boxes;
-
-use iLearn\Box\ArrayListBoxSubject;
-use iLearn\Box\BoxSubject;
+use iLearn\Box\ArrayListSubject;
+use iLearn\Box\Subject;
 use iLearn\Box\Course;
 
-if (class_exists("iLearn\\Sql\\DBCONN")) {
-    $db = new iLearn\Sql\DBCONN("ilearn");
-}
+$array_boxes = [];
 
 $select_boxes = $db->select(
     "subject",
     [
         "subject" => [
+            "id",
             "title",
             "short_desc",
             "image",
             "difficulty",
             "year",
-            "link"
+            "hint"
         ],
-        "course" => "title",
+        "course" => [
+            "title",
+            "sku"
+        ],
         "typecourse" => "css_class"
     ],
     [
@@ -44,12 +49,9 @@ $select_boxes = $db->select(
     ]
 );
 
-$array_boxes = [];
-
 foreach ( $select_boxes as $i => $content ) {
-    $link_esc = ( empty( $content['subject_link'] ) || $content['subject_link'] === '' || $content['subject_link'] === NULL || $content['subject_link'] === 'undefined' ) ? '#' : $content['subject_link'];
-    $course = new Course( $content['course_title'], $content['typecourse_css_class'] );
-    $box = new BoxSubject( $content['subject_title'], $content['subject_short_desc'], $content['subject_image'], $content['subject_difficulty'], $content['subject_year'], $course, $link_esc );
+    $course = new Course( $content['course_title'], $content['typecourse_css_class'], $content['course_sku'] );
+    $box = new Subject( $content['subject_id'], $content['subject_title'], $content['subject_short_desc'], $content['subject_hint'], $content['subject_image'], $content['subject_difficulty'], $content['subject_year'], $course );
     $check = array_push( $array_boxes, $box );
     if ( ! $check ) {
         echo "Non aggiunto";
@@ -57,5 +59,5 @@ foreach ( $select_boxes as $i => $content ) {
     }
 }
 
-$gb_boxes = ArrayListBoxSubject::drawBoxes( $array_boxes );
+$gb_boxes = ArrayListSubject::drawBoxes( $array_boxes );
 
