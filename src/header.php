@@ -18,6 +18,8 @@
     <script src="https://kit.fontawesome.com/557a090e67.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script defer src="/blog/assets/js/main.js"></script>
+    <script defer src="/blog/assets/js/lateral-bar.js"></script>
+    <script defer src="/blog/assets/js/search-ajax.js"></script>
 </head>
 <body>
     <header class="container-fluid position-fixed">
@@ -29,7 +31,7 @@
                     <a class="btn-search box-change-theme">
                         <i class="fa-solid fa-sun fa-2xl prova-anim" style="color: #ffffff;"></i>
                     </a>-->
-                    <a class="navbar-brand title-logo">
+                    <a class="navbar-brand title-logo" href="/blog/">
                         <img src="/blog/assets/img/logo_sfondo_trasparente.png" alt="Logo iLearn">
                     </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

@@ -7,9 +7,10 @@
 
 namespace iLearn\Box;
 
-final class Lesson {
+use iLearn\Box\Subject;
+use iLearn\Box\Box;
 
-    private $title;
+final class Lesson extends Box {
 
     private $date;
 
@@ -21,19 +22,21 @@ final class Lesson {
 
     private $link;
 
+    public Subject $subject;
+
     private $content;
 
-    public function __construct( $title = null, $date = null, $last_upd = null, $hint = null, $short_desc = null, $link = null, $content = null ) {
-        $this->title = $title;
+    public function __construct( $title = null, $date = null, $link = null, $last_upd = null, $hint = null, $short_desc = null, Subject $subject = null, $content = null ) {
+        
+        parent::__construct( $title );
         $this->date = $date;
         $this->last_upd = $last_upd;
         $this->hint = $hint;
         $this->short_desc = $short_desc;
         $this->link = $link;
+        $this->subject = ( $subject === null ) ? new Subject() : $subject;
         $this->content = $content;
     }
-
-    public function getTitle() { return $this->title; }
 
     public function getDate() { return $this->date; }
 
@@ -42,4 +45,6 @@ final class Lesson {
     public function getShortDesc() { return $this->short_desc; }
 
     public function getLink() { return strtolower( $this->link ); }
+
+    // public function getSubject() { return $this->subject; }
 }

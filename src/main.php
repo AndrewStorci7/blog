@@ -4,12 +4,12 @@
 
 <main>
     <div class="container filter-panel position-relative <?php echo $subject->course->getCssClass(); ?>-fp">
-        <form action="#" method="get" class="search-form">
+        <form class="search-form">
             <div class="search-box">
-                <button class="btn-search">
+                <button type="button" class="btn-search">
                     <i class="fas fa-search"></i>
                 </button>
-                <input type="text" class="input-search" placeholder="Type to Search...">
+                <input type="text" class="input-search" id="text-to-search" name="text-to-search" placeholder="Type to Search...">
             </div>
         </form>
         <div class="dropdown">
@@ -28,16 +28,14 @@
         <div class="row">
             <div class="col-3">            
                 <div class="lateral-navbar <?php echo $subject->course->getCssClass(); ?>-fp box-sw-tailwind" style="width: 100%; height: 600px">
-                    <div class="title-lateral-navbar position-relative">
-                        <h4 class="position-absolute top-50 start-50 translate-middle">
-                            Tutti i Corsi
-                        </h4>
-                    </div>
+                    <?php echo $lateral_bar_draw; ?>
                 </div>
             </div>
             <div class="col-8">
-                <div style="width: 100%; height: 600px">
-
+                <div class="container">
+                    <div class="row content-page-current" id="show-search-content">
+                        <?php echo $content_page_current; ?>
+                    </div>
                 </div>
             </div>
         </div>

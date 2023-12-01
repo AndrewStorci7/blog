@@ -429,7 +429,7 @@ final class DBCONN {
                     $isOrderBy = false;
                 } else if ( $snz_c !== 'condition' ) {
                     if ( $isLike ) {
-                        $query .= " $snz_c LIKE :{$this->sanitize_param( $snz_c )}"; // '{$this->sanitize_str( $condition )}' ";
+                        $query .= " $snz_c LIKE \"%{$this->sanitize_param( $condition )}%\" "; // :{$this->sanitize_param( $snz_c )}"; // '{$this->sanitize_str( $condition )}' ";
                         $isLike = false;
                     } else
                         $query .= " $snz_c = :{$this->sanitize_param( $snz_c )}"; // '{$this->sanitize_str( $condition )}' ";
@@ -442,13 +442,17 @@ final class DBCONN {
         $stmt = $this->pdo->prepare( $query );
 
         if ( $where !== '1' ) {
-            
+
+            $isLike = false;            
             foreach ( $where as $c => $condition ) {
 
                 $snz_c          = $this->sanitize_str( $c );
                 $snz_condition  = $this->sanitize_str( $condition );
     
-                if ( strpos( $snz_c, 'condition' ) === false && strpos( $snz_c, 'order_by' ) === false ) {
+                if ( $isLike ) {
+                    $isLike = false;
+                    continue;
+                } else if ( strpos( $snz_c, 'condition' ) === false && strpos( $snz_c, 'order_by' ) === false ) {
     
                     switch ( gettype( $snz_condition ) ) {
                         case 'string':
@@ -471,7 +475,10 @@ final class DBCONN {
                     }
 
                     $stmt->bindValue( ":{$this->sanitize_param( $snz_c )}", $snz_condition, $bind_type );
-                }
+                } else if ( strpos( $snz_condition, "like" ) !== false || strpos( $snz_condition, "LIKE" ) !== false ) {
+                    $isLike = true;
+                    continue;
+                } 
             }
         }
 

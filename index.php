@@ -87,7 +87,7 @@ require_once __DIR__ . "/src/header.php";
 
     <hr class="hr-styled">
 
-    <section class="most-popular-notes">
+    <section class="most-popular-notes" id="most-popular-notes-id">
         <div class="container">
             <div class="row">
                 <?php

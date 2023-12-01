@@ -11,8 +11,6 @@ final class ContentFooter {
 
     private $bg_color;
 
-    
-
     private $title;
 
     private $course_year;
@@ -21,7 +19,8 @@ final class ContentFooter {
 
     private $course_diff;
 
-    public function __construct( $bg_color, $title, $course_year, $course_title, $course_diff ) {
+    public function __construct( $bg_color = null, $title = null, $course_year = null, $course_title = null, $course_diff = null ) {
+        
         $this->bg_color = $bg_color;
         $this->title = $title;
         $this->course_year = $course_year;

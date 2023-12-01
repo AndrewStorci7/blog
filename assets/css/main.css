@@ -559,10 +559,92 @@ main .lateral-navbar .title-lateral-navbar {
 }
 .lateral-navbar .information-courses {
     background-color: #404779;
-    padding: 5px;
+    padding: 5px 10px;
     margin: 10px;
     margin-top: 10px;
-    margin-top: 20px;
+    /* margin-top: 20px; */
     border-radius: 10px;
     width: fit-content;
+    font-size: 12px;
+    transition: all .1s linear;
+}
+.lateral-navbar .information-courses:hover {
+    cursor: pointer;
+    opacity: .8;
+    transition: all .1s linear;
+}
+.lateral-navbar .information-courses:active {
+    cursor: pointer;
+    opacity: .8;
+}
+.fix-margin-first-lb {
+    margin-top: 20px !important;
+}
+.lateral-navbar .dropdown-lb {
+    color: white;
+    margin-left: 11%;
+    border-radius: 5px;
+    background: #6C73B2;
+    margin-right: 10px;
+    /* position: static; */
+    /* display: flex; */
+    margin-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: fit-content;
+    font-size: 10px;
+    text-decoration: none;
+    display: block;
+    transition: all .1s linear;
+}
+.lateral-navbar .dropdown-lb:hover {
+    cursor: pointer;
+    font-size: 12px;
+    transition: all .1s linear;
+}
+.lateral-navbar .dropdown-box-information .dropdown-box-under {
+    height: 100%;
+}
+.lateral-navbar .dropdown-box-information .hide {
+    height: 0%;
+    visibility: hidden;
+    opacity: 0;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+}
+.content-page-current .lesson-box {
+    position: inherit;
+    height: 100px;
+    transform: translate(0, 0);
+    margin-top: 20px;
+}
+.content-page-current .content {
+    top: 0;
+    left: 0;
+    transform: translate(0, 0);
+}
+.goback-button {
+    float: right;
+    text-decoration: none;
+    font-size: 18px;
+    background-color: var(--clr-h1-primary);
+    color: var(--clr-box-spotify);
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 20px;
+}
+/*
+.lateral-navbar .dropdown-box-information .hide .dropdown-lb {
+    visibility: hidden;
+}
+*/
+.nothing-found {
+    height: 400px;
+}
+.nothing-found .search-404 {
+    height: 150px;
+    width: 300px;
+    background-color: var(--clr-box-spotify);
+    border-radius: 20px;
 }

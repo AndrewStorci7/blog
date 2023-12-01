@@ -7,21 +7,20 @@
 
 namespace iLearn\Box;
 
-final class Course {
+use iLearn\Box\Box;
 
-    private $title;
+final class Course extends Box {
 
     private $css_class;
 
     private $sku;
 
     public function __construct( $title = null, $css_class = null, $sku = null ) {
-        $this->title = $title;
+        
+        parent::__construct( $title );
         $this->css_class = $css_class;
         $this->sku = $sku;
     }
-
-    public function getTitle() { return $this->title; }
 
     public function getCssClass() { return $this->css_class; }
 

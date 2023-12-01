@@ -34,7 +34,7 @@ class ArrayListCourse {
                                         Vai agli appunti
                                     </a>
                                 </div>
-                            </div><!-- END ALGORITMI CARD -->
+                            </div>
                         </div>";
             }
         }

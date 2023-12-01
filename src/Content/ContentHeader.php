@@ -21,7 +21,8 @@ final class ContentHeader {
 
     private $course_diff;
 
-    public function __construct( $bg_color, $image_bg, $title, $course_year, $course_title, $course_diff ) {
+    public function __construct( $bg_color = null, $image_bg = null, $title = null, $course_year = null, $course_title = null, $course_diff = null ) {
+        
         $this->bg_color = $bg_color;
         $this->image_bg = $image_bg;
         $this->title = $title;
