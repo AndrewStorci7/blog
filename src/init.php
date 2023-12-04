@@ -11,6 +11,7 @@ use iLearn\Box\ArrayListSubject;
 use iLearn\Box\Subject;
 use iLearn\Box\Course;
 
+$css_bg = null;
 $array_boxes = [];
 
 $select_boxes = $db->select(

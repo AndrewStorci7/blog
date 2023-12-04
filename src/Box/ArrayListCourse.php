@@ -17,22 +17,24 @@ class ArrayListCourse {
             foreach ( $array as $i => $course ) {
 
                 $res .= "<div class=\"col-4\">
-                            <div class=\"card-note fix-h3\">
-                                <h3>{$course->getTitle()}</h3>
-                            </div>
-                            <div class=\"content\">
-                                <div class=\"category\">
-                                    <div class=\"mini-box primary primary-date\">
-
-                                    </div>
+                            <div class=\"ciupapi\" data-link=\"/blog/{$lower_ct}/{$lower_im}/\">
+                                <div class=\"card-note fix-h3\">
+                                    <h3>{$course->getTitle()}</h3>
                                 </div>
-                                <div class=\"text\">
-                                    <span>
-                                        {$course->getShortDesc()}
-                                    </span>
-                                    <a href=\"/blog/{$lower_ct}/{$lower_im}/\">
-                                        Vai agli appunti
-                                    </a>
+                                <div class=\"content\">
+                                    <div class=\"category\">
+                                        <div class=\"mini-box primary primary-date\">
+
+                                        </div>
+                                    </div>
+                                    <div class=\"text\">
+                                        <span>
+                                            {$course->getShortDesc()}
+                                        </span>
+                                        <a href=\"/blog/{$lower_ct}/{$lower_im}/\">
+                                            Vai agli appunti
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>";

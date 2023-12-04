@@ -7,6 +7,7 @@
 
 namespace iLearn\Box;
 
+use iLearn\Box\Course;
 use iLearn\Box\Box;
 
 final class Course extends Box {
@@ -15,11 +16,14 @@ final class Course extends Box {
 
     private $sku;
 
-    public function __construct( $title = null, $css_class = null, $sku = null ) {
+    public readonly array|Subject $subject;
+
+    public function __construct( int $id = null, string $title = null, string $css_class = null, string $sku = null, array|Subject $subject = null ) {
         
-        parent::__construct( $title );
+        parent::__construct( $id, $title );
         $this->css_class = $css_class;
         $this->sku = $sku;
+        $this->subject = ( $subject === null ) ? new Subject() : $subject;
     }
 
     public function getCssClass() { return $this->css_class; }

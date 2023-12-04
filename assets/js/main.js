@@ -11,3 +11,9 @@ window.addEventListener("mousemove", (e) => {
         el.style.transform = `translateX(calc(-50% + ${xVal * speedx}px)) translateY(calc(-50% + ${yVal * speedx}px))`;
     });
 });
+
+jQuery(document).ready( ($) => {
+    $(".ciupapi").click( (e) => {
+        window.location.href = $(e.currentTarget).attr("data-link");
+    });
+});

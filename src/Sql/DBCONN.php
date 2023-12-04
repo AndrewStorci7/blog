@@ -386,7 +386,7 @@ final class DBCONN {
             foreach ( $array_relations as $k => $rel ) {
                 if ( gettype( $rel ) === 'string' ) {
                     if ( $k === array_key_first( $array_relations ) ) 
-                        $query .= "{$this->sanitize_str( $k )}.{$this->sanitize_str( $rel )} = ";
+                        $query .= " {$this->sanitize_str( $k )}.{$this->sanitize_str( $rel )} = ";
                     else $query .= "{$this->sanitize_str( $k )}.{$this->sanitize_str( $rel )}";
                 } else if ( count( $rel ) != 2 ) {
                     return "Error: Array empty";

@@ -3,7 +3,7 @@
 ?>
 
 <section>
-    <div class="container-fluid header-panel <?php echo $subject->course->getCssClass(); ?>">
+    <div class="container-fluid header-panel <?php echo $css_bg; ?>">
         <div class="container">
             <h1 style="font-weight: bolder; letter-spacing: .05rem">
                 <?php echo $subject->getTitle(); ?>

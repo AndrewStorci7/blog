@@ -24,6 +24,8 @@ $inf_get_lesson     = isset( $_GET['lesson'] )          ? $_GET['lesson']       
 $course_current = null;
 $subject_current = null;
 $content_page_current = null;
+$css_bg = "default";
+$err_404 = false;
 $array_lesson_current = [];
 $array_subject = [];
 
@@ -82,11 +84,13 @@ if ( ( ! empty( $inf_get_course ) && $inf_get_course !== null && $inf_get_course
         [
             "subject.image" => strtolower( $inf_get_subject ),
             "condition" => "AND",
-            "course.id" => $id_course[0]['course_id']
+            "course.id" => $id_course[0]['course_id'],
+            "condition_2" => "AND",
+            "subject.year" => $inf_get_year
         ]
     );
 
-    
+    $css_bg = $select_data_for_content_header[0]['typecourse_css_class'];
 
     foreach ( $select_data_for_content_header as $i => $cnt_header ) {
         $course = new Course( $cnt_header['course_title'], $cnt_header['typecourse_css_class'], $cnt_header['course_sku'] );
@@ -189,7 +193,7 @@ if ( ( ! empty( $inf_get_course ) && $inf_get_course !== null && $inf_get_course
             ]
         ],
         [
-            "subject.year" => $inf_get_year,
+            "subject.image" => $inf_get_subject
             /// "condition_1"   => "AND",
             /// "condition_2"   => "LIKE",
             /// "lesson.title"  => $lesson_to_search
@@ -211,10 +215,42 @@ if ( ( ! empty( $inf_get_course ) && $inf_get_course !== null && $inf_get_course
     // $select_data_for_content_footer = $db->select(
     //    ""
     // );
+} else if ( ( ! empty( $inf_get_course ) && $inf_get_course !== null && $inf_get_course !== '' ) ) {
+
+    global $db;
+
+    $select_content_page = $db->select(
+        "course",
+        [
+            "course" => [
+                "id",
+                "title",
+                "sku"
+            ],
+            "typecourse" => "css_class"
+        ],
+        [ "JOIN" => "typecourse" ],
+        [ 
+            "course" => "type_course",
+            "typecourse" => "id" 
+        ],
+        [ "course.sku" => $inf_get_course ]
+    );
+
+    if ( empty( $select_content_page ) ) {
+        $err_404 = true;   
+    } else {
+        echo "ci sono delle materie";
+    }
 }
 
 require_once __DIR__ . "/header.php";
 require_once __DIR__ . "/header_panel.php";
-/// require_once __DIR__ . "/search.php";
-require_once __DIR__ . "/main.php";
+
+if ( $err_404 ) {
+    require_once __DIR__ . "/404.php";
+} else {
+    require_once __DIR__ . "/main.php";
+}
+
 require_once __DIR__ . "/footer.php";

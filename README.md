@@ -13,6 +13,8 @@
     - [x] Creare oggetto di tipo `LateralBar` e aggiornare le varie classi
     - [x] Far __visualizzare__ il contenuto e creare il `css` per la `lateral bar`
 - [ ] Terminare classe `Lesson`
+- [ ] Guardare documentazione [__API PayPal__]('https://developer.paypal.com/api/rest/')
+    - [ ] Integrare bottone o iFrame per la donazione utilizzando PayPal
 
 # Things to do
 

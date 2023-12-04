@@ -9,11 +9,16 @@ namespace iLearn\Box;
 
 class Box {
 
+    private $id;
+
     private $title;
 
-    public function __construct( $title = null ) {
+    public function __construct( int $id = 0, string $title = null ) {
+        $this->id = $id;
         $this->title = $title;
     }
+
+    public function getId() { return $this->id; }
 
     public function getTitle() { return $this->title; }
 }

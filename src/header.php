@@ -105,9 +105,9 @@
                                     </li>
                                 </ul>
                             </li>
-                            <form action="#" method="get" class="search-form">
+                            <form class="search-form">
                                 <div class="search-box">
-                                    <button class="btn-search">
+                                    <button type="button" class="btn-search">
                                         <i class="fas fa-search"></i>
                                     </button>
                                     <input type="text" class="input-search" placeholder="Type to Search...">

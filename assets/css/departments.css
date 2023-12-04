@@ -11,3 +11,5 @@
 .sea { background-color: #FDE547; color: #1F1F1E; }
 /* scienze medico-veterinarie */
 .sme{ background-color: #AD6786; color: #1F1F1E; }
+
+.default { background-color: var(--clr-dark-purple); }

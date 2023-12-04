@@ -20,22 +20,24 @@ class ArrayListLesson {
 
                 $reduce_text = substr( $lesson->getShortDesc(), 0, 50 ) . " ...";
                 $ret .= "<div class=\"col-4\">
-                            <div class=\"card-note lesson-box\">
-                                <h3>{$lesson->getTitle()}</h3>
-                            </div>
-                            <div class=\"content\">
-                                <div class=\"category\">
-                                    <div class=\"mini-box primary\">
-                                        {$lesson->getDate()}
-                                    </div>
+                            <div class=\"ciupapi\" data-link=\"/blog/{$lesson->subject->course->getSku()}/{$lesson->subject->getYear()}/{$lesson->subject->getImage()}/{$lesson->getLink()}/\">
+                                <div class=\"card-note lesson-box\">
+                                    <h3>{$lesson->getTitle()}</h3>
                                 </div>
-                                <div class=\"text\">
-                                    <span>
-                                        {$reduce_text}
-                                    </span>
-                                    <a href=\"/blog/{$lesson->subject->course->getSku()}/{$lesson->subject->getYear()}/{$lesson->subject->getImage()}/{$lesson->getLink()}/\">
-                                        Vai alla Lezione
-                                    </a>
+                                <div class=\"content\">
+                                    <div class=\"category\">
+                                        <div class=\"mini-box primary\">
+                                            {$lesson->getDate()}
+                                        </div>
+                                    </div>
+                                    <div class=\"text\">
+                                        <span>
+                                            {$reduce_text}
+                                        </span>
+                                        <!--<a href=\"/blog/{$lesson->subject->course->getSku()}/{$lesson->subject->getYear()}/{$lesson->subject->getImage()}/{$lesson->getLink()}/\">
+                                            Vai alla Lezione
+                                        </a>-->
+                                    </div>
                                 </div>
                             </div>
                         </div>";
